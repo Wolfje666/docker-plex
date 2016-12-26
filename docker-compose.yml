@@ -1,0 +1,8 @@
+version: '2'
+services:
+  plex:
+    build: .
+    image: jameseckersall/plex
+    user: "100000"
+    ports:
+      - "32800:32400"
