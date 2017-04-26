@@ -2,6 +2,8 @@ FROM debian:latest
 
 MAINTAINER James Eckersall <james.eckersall@gmail.com>
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 RUN \
   apt-get update && \
   apt-get install -y wget ruby && \
