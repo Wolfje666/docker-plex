@@ -11,7 +11,7 @@ RUN \
   dpkg --install /tmp/plex.deb && \
   rm -f /tmp/plex.deb && \
   apt-get -fy install && \
-  mkdir -p --mode 0777 /Library /media/films /media/music /media/photos /media/tv /media/videos && \
+  mkdir -p --mode 0755 /Library /media/films /media/music /media/photos /media/tv /media/videos && \
   apt-get remove -y ruby && \
   apt-get -y autoremove && \
   apt-get clean && \
