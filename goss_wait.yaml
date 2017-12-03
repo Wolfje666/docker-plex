@@ -1,0 +1,5 @@
+---
+addr:
+  tcp://localhost:32400:
+    reachable: true
+    timeout: 500

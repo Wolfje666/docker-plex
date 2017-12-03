@@ -1,0 +1,8 @@
+package: {}
+process: {}
+http:
+  http://localhost:32400/web/index.html:
+    status: 200
+    timeout: 1000
+    body:
+    - '<title>Plex</title>'
