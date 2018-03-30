@@ -1,5 +1,3 @@
-package: {}
-process: {}
 http:
   http://localhost:32400/web/index.html:
     status: 200

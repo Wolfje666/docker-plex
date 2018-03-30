@@ -1,5 +1,10 @@
 ---
-addr:
-  tcp://localhost:32400:
-    reachable: true
-    timeout: 500
+#addr:
+#  tcp://localhost:32400:
+#    reachable: true
+#    timeout: 500
+http:
+  http://localhost:32400:
+    status:
+      gt: 0
+exit-status: 0

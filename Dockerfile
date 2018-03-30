@@ -4,15 +4,27 @@ MAINTAINER James Eckersall <james.eckersall@gmail.com>
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# TODO: Parse version number to aid release tag
+# https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="ubuntu" and .build=="linux-ubuntu-x86_64")'
+# {
+#   "label": "Ubuntu 64-bit (10.04 Lucid or newer)",
+#   "build": "linux-ubuntu-x86_64",
+#   "distro": "ubuntu",
+#   "url": "https://downloads.plex.tv/plex-media-server/1.12.1.4885-1046ba85f/plexmediaserver_1.12.1.4885-1046ba85f_amd64.deb",
+#   "checksum": "d83c93362ad4b5525716440c97ef1f290fe2752b"
+# }
+
+# curl -s https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="ubuntu" and .build=="linux-ubuntu-x86_64") .url' | cut -d\/ -f5
+# 1.12.1.4885-1046ba85f
+
 RUN \
   apt-get update && \
-  apt-get install -y wget ruby && \
+  apt-get install -y wget && \
   wget -q "https://plex.tv/downloads/latest/1?channel=8&build=linux-ubuntu-x86_64&distro=ubuntu" -O /tmp/plex.deb && \
   dpkg --install /tmp/plex.deb && \
   rm -f /tmp/plex.deb && \
   apt-get -fy install && \
-  mkdir -p --mode 0755 /Library /media/films /media/music /media/photos /media/tv /media/videos && \
-  apt-get remove -y ruby && \
+  mkdir -p --mode 0775 /Library /media/films /media/music /media/photos /media/tv /media/videos && \
   apt-get -y autoremove && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
