@@ -16,11 +16,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # curl -s https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="ubuntu" and .build=="linux-ubuntu-x86_64") .url' | cut -d\/ -f5
 # 1.12.1.4885-1046ba85f
+ARG PLEX_VERSION=1.12.1.4885-1046ba85f
+ARG PLEX_URL=https://downloads.plex.tv/plex-media-server/1.12.1.4885-1046ba85f/plexmediaserver_1.12.1.4885-1046ba85f_amd64.deb
 
+# wget -q "https://plex.tv/downloads/latest/1?channel=8&build=linux-ubuntu-x86_64&distro=ubuntu" -O /tmp/plex.deb && \
 RUN \
   apt-get update && \
   apt-get install -y wget && \
-  wget -q "https://plex.tv/downloads/latest/1?channel=8&build=linux-ubuntu-x86_64&distro=ubuntu" -O /tmp/plex.deb && \
+  wget -q "${PLEX_URL}" -O /tmp/plex.deb && \
   dpkg --install /tmp/plex.deb && \
   rm -f /tmp/plex.deb && \
   apt-get -fy install && \
