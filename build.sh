@@ -17,6 +17,8 @@ if [ "${VERSION}" != "${DOCKERFILE_VERSION}" ]; then
   make minor-release
   exit -1
 else
+  make build
+  make push
   echo "No change"
 fi
 
