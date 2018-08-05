@@ -16,8 +16,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # curl -s https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="ubuntu" and .build=="linux-ubuntu-x86_64") .url' | cut -d\/ -f5
 # 1.12.1.4885-1046ba85f
-ARG PLEX_VERSION=1.13.5.5291-6fa5e50a8
-ARG PLEX_URL=https://downloads.plex.tv/plex-media-server/1.13.5.5291-6fa5e50a8/plexmediaserver_1.13.5.5291-6fa5e50a8_amd64.deb
+ARG PLEX_VERSION=1.15.3.876-ad6e39743
+ARG PLEX_URL=https://downloads.plex.tv/plex-media-server-new/1.15.3.876-ad6e39743/debian/plexmediaserver_1.15.3.876-ad6e39743_amd64.deb
 
 # wget -q "https://plex.tv/downloads/latest/1?channel=8&build=linux-ubuntu-x86_64&distro=ubuntu" -O /tmp/plex.deb && \
 RUN \
