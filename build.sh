@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-URL=$(curl -s https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="ubuntu" and .build=="linux-ubuntu-x86_64") .url' | sed -e 's/"//g')
+URL=$(curl -Ls https://plex.tv/api/downloads/1.json | jq '.computer.Linux.releases[] |select(.distro=="debian" and .build=="linux-x86_64") .url' | sed -e 's/"//g')
 VERSION=$(echo $URL | cut -d\/ -f5)
 
 git pull > /dev/null 2>&1
