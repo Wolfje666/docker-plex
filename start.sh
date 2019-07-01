@@ -27,7 +27,7 @@ export TMPDIR="${PLEX_MEDIA_SERVER_TMPDIR}"
 ulimit -s $PLEX_MEDIA_SERVER_MAX_STACK_SIZE
 
 if [ "$1" == "run" ]; then
-  rm -f ${PLEX_MEDIA_SERVER_HOME}/plexmediaserver.pid
+  rm -f ${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/plexmediaserver.pid
   cd /usr/lib/plexmediaserver && exec ./Plex\ Media\ Server
 else
   exec "$@"
